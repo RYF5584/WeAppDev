@@ -8,7 +8,7 @@
 
 手机装一个 APK，输入 AppID 就能跑；连上电脑，Chrome 能给业务代码下断点。
 
-<p><a href="https://github.com/RYF5584/WeAppDev/releases"><img src="https://img.shields.io/badge/version-1.0.0-12A65A?style=flat-square" alt="version" /></a> <a href="https://weappdev.top"><img src="https://img.shields.io/badge/docs-weappdev.top-12A65A?style=flat-square" alt="docs" /></a> <img src="https://img.shields.io/badge/platform-Android%207.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white" alt="platform" /> <img src="https://img.shields.io/badge/root-not%20required-success?style=flat-square" alt="root" /> <img src="https://img.shields.io/badge/xposed-not%20required-success?style=flat-square" alt="xposed" /></p>
+<p><a href="https://github.com/RYF5584/WeAppDev/releases"><img src="https://img.shields.io/badge/version-1.1.0_beta-12A65A?style=flat-square" alt="version" /></a> <a href="https://weappdev.top"><img src="https://img.shields.io/badge/docs-weappdev.top-12A65A?style=flat-square" alt="docs" /></a> <img src="https://img.shields.io/badge/platform-Android%207.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white" alt="platform" /> <img src="https://img.shields.io/badge/root-not%20required-success?style=flat-square" alt="root" /> <img src="https://img.shields.io/badge/xposed-not%20required-success?style=flat-square" alt="xposed" /></p>
 
 <p><a href="https://weappdev.top">官网</a> · <a href="https://github.com/RYF5584/WeAppDev/releases">下载</a> · <a href="#联系">加群</a></p>
 
@@ -34,6 +34,52 @@ WeAppDev 是一个可以**脱离微信运行小程序和小游戏**的 Android �
 ## 文档
 
 完整文档在官网 [weappdev.top](https://weappdev.top)：安装、DevTools、抓包与改写、插件 API。
+
+## MCP 与 Skill（v1.1.0 起）
+
+从 v1.1.0 开始，WeAppDev 同时提供 **MCP 服务**和 **Agent Skill**，AI 助手可以直接操作手机上的小程序：抓包、断点、云开发、插件开发、UI 自动化，全程不需要电脑。
+
+- MCP 服务：[RYF5584/weappdev-mcp](https://github.com/RYF5584/weappdev-mcp)
+- Skill：[RYF5584/weappdev-skill](https://github.com/RYF5584/weappdev-skill)
+- 文档：[weappdev.top/ai](https://weappdev.top/ai)
+
+### 安装 MCP
+
+**方式一 · 直连 HTTP**（单设备，零安装）
+
+```json
+{
+  "mcpServers": {
+    "weappdev-http": {
+      "type": "http",
+      "url": "http://127.0.0.1:9400/mcp"
+    }
+  }
+}
+```
+
+USB 调试先执行 `adb forward tcp:9400 tcp:9400`；局域网把 `127.0.0.1` 换成设备 IP。
+
+**方式二 · Studio 聚合**
+
+```json
+{
+  "mcpServers": {
+    "weappdev": {
+      "command": "npx",
+      "args": ["-y", "@ryf5584/weappdev-mcp"]
+    }
+  }
+}
+```
+
+### 安装 Skill
+
+```bash
+npx -y skills add RYF5584/weappdev-skill
+```
+
+Skill 是用法说明书，MCP 才是干活的工具，两个一起装效果最好。前置条件：手机上装好并打开 WeAppDev。
 
 ## 关于本仓库
 
